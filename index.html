@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bitcoin Tracker - Giełda</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">Bitcoin Tracker</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Market</a></li>
+          <li><a href="#">Trade</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="info-panel">
+        <h2>Bitcoin Price</h2>
+        <p>Aktualna cena Bitcoina: <span id="btcPrice">0</span> USD</p>
+        <p>24h Zmiana: <span id="btcChange">0%</span></p>
+        <p>Posiadane Bitcoiny: <span id="btcAmount">0</span> BTC</p>
+        <p>
+          Zysk/Strata: <span id="btcProfit">0 USD</span> (<span
+            id="btcProfitPercent"
+            >0%</span
+          >)
+        </p>
+
+        <!-- Nowa sekcja z rekomendacjami -->
+        <div class="recommendation">
+          <h3>Rekomendacje</h3>
+          <p id="recommendationText">Obserwuj rynek...</p>
+          <p id="recommendationAction">... aby uzyskać rekomendację.</p>
+        </div>
+
+        <div class="action-buttons">
+          <button id="buyBtn">Kup</button>
+          <button id="sellBtn">Sprzedaj</button>
+        </div>
+
+        <!-- Tabela kryptowalut -->
+        <div class="crypto-table">
+          <h3>Inne kryptowaluty</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Nazwa</th>
+                <th>Cena (USD)</th>
+                <th>Zmiana (24h)</th>
+              </tr>
+            </thead>
+            <tbody id="cryptoTableBody">
+              <tr>
+                <td>Bitcoin (BTC)</td>
+                <td id="btcPriceTable" class="price-cell">0</td>
+                <td id="btcChangeTable" class="change-cell">0%</td>
+              </tr>
+              <tr>
+                <td>Ethereum (ETH)</td>
+                <td id="ethPriceTable" class="price-cell">0</td>
+                <td id="ethChangeTable" class="change-cell">0%</td>
+              </tr>
+              <tr>
+                <td>Litecoin (LTC)</td>
+                <td id="ltcPriceTable" class="price-cell">0</td>
+                <td id="ltcChangeTable" class="change-cell">0%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2025 Bitcoin Tracker | All rights reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
