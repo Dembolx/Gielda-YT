@@ -188,7 +188,6 @@ function updateRecommendations() {
     { name: "Litecoin", change: ltcChange },
   ];
 
-  // Znajdź kryptowalutę z największą zmianą
   const maxChangeCrypto = changes.reduce(
     (max, curr) => (Math.abs(curr.change) > Math.abs(max.change) ? curr : max),
     changes[0]
@@ -197,7 +196,6 @@ function updateRecommendations() {
   let recommendationText = "";
   let recommendationAction = "";
 
-  // Ustaw rekomendacje na podstawie zmian
   if (maxChangeCrypto.change > 0) {
     recommendationText = `Największa zmiana: ${
       maxChangeCrypto.name
@@ -210,12 +208,10 @@ function updateRecommendations() {
     recommendationAction = `Rozważ zakup ${maxChangeCrypto.name}.`;
   }
 
-  // Zaktualizuj tekst rekomendacji ogólnych
   document.getElementById("recommendationText").innerText = recommendationText;
   document.getElementById("recommendationAction").innerText =
     recommendationAction;
 
-  // Dodatkowa rekomendacja dla Bitcoina
   let btcRecommendation = "";
   if (btcChange > 0) {
     btcRecommendation = "Cena Bitcoina wzrasta. Rozważ sprzedaż.";
@@ -225,10 +221,8 @@ function updateRecommendations() {
     btcRecommendation = "Cena Bitcoina się nie zmienia. Obserwuj rynek.";
   }
 
-  // Zaktualizuj rekomendację dla Bitcoina
   document.getElementById("btcBuySellRecommendation").innerText =
     btcRecommendation;
 }
 
-// Zaktualizuj rekomendacje przy każdej zmianie
 setInterval(updateRecommendations, 2000);
