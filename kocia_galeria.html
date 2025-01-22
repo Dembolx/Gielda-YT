@@ -3,39 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cat Gallery</title>
+    <title>Cat Chronicles</title>
     <link rel="stylesheet" href="kg_styles.css" />
   </head>
   <body>
-    <header class="navbar">
-      <h1>Welcome to the Cat Gallery</h1>
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <h1>🐾 Cat Chronicles</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#facts">Cat Facts</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <main class="gallery-container">
+    <section id="about" class="hero">
+      <div class="hero-text">
+        <h2>Welcome to Cat Chronicles!</h2>
+        <p>
+          Your ultimate destination for adorable cat stories, tips, and
+          everything feline. Dive into our gallery and discover the magic of
+          cats!
+        </p>
+        <button id="exploreBtn">Explore Now</button>
+      </div>
+    </section>
+
+    <main id="gallery" class="gallery-container">
+      <h2>Gallery</h2>
       <div class="gallery-item">
-        <img src="cat1.jpg" alt="Playful Cat" />
+        <img src="kot1.jpg" alt="Playful Cat" />
         <h3>Playful Cat</h3>
         <p>This little one loves to chase toys and climb furniture!</p>
+        <button class="action-btn">Adopt Me</button>
       </div>
       <div class="gallery-item">
-        <img src="cat2.jpg" alt="Sleepy Cat" />
+        <img src="kot2.jpg" alt="Sleepy Cat" />
         <h3>Sleepy Cat</h3>
         <p>Perfectly cozy and napping on a sunny afternoon.</p>
+        <button class="action-btn">Learn More</button>
       </div>
       <div class="gallery-item">
-        <video src="cat_video.mp4" controls></video>
+        <video src="kotel.mp4" controls></video>
         <h3>Adventurous Cat</h3>
         <p>Watch this curious kitty explore the great outdoors.</p>
+        <button class="action-btn">Watch Again</button>
       </div>
       <div class="gallery-item">
-        <img src="cat3.jpg" alt="Elegant Cat" />
+        <img src="kot3.jpg" alt="Elegant Cat" />
         <h3>Elegant Cat</h3>
         <p>Graceful and majestic, always camera-ready.</p>
+        <button class="action-btn">See More</button>
       </div>
     </main>
 
-    <footer>
-      <p>© 2025 Cat Gallery | All rights reserved</p>
+    <section id="facts" class="info-section">
+      <h2>Did You Know?</h2>
+      <ul>
+        <li>Cats sleep for about 12-16 hours a day!</li>
+        <li>The oldest known pet cat existed 9,500 years ago.</li>
+        <li>Cats can rotate their ears 180 degrees.</li>
+        <li>
+          Each cat's nose has a unique pattern, just like human fingerprints.
+        </li>
+      </ul>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-content">
+        <p>
+          Contact Us:
+          <a href="mailto:info@catchronicles.com">info@catchronicles.com</a>
+        </p>
+        <p>
+          Follow us: <a href="#">Facebook</a> | <a href="#">Instagram</a> |
+          <a href="#">Twitter</a>
+        </p>
+        <p>© 2025 Cat Chronicles | All rights reserved</p>
+      </div>
     </footer>
 
     <script src="script2.js"></script>

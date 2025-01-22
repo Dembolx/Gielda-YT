@@ -1,9 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const galleryItems = document.querySelectorAll(".gallery-item");
+// Dodaj funkcję do przycisku "Explore Now"
+document.getElementById("exploreBtn").addEventListener("click", () => {
+  window.scrollTo({
+    top: document.getElementById("gallery").offsetTop,
+    behavior: "smooth",
+  });
+});
 
-  galleryItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      alert("You clicked on: " + item.querySelector("h3").textContent);
-    });
+// Obsługa przycisków w galerii
+document.querySelectorAll(".action-btn").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const catName = event.target
+      .closest(".gallery-item")
+      .querySelector("h3").innerText;
+    alert(`You clicked on: ${catName}`);
   });
 });

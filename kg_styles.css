@@ -3,78 +3,176 @@ body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
+  background-color: #f9f9f9;
   color: #333;
+  scroll-behavior: smooth;
 }
 
 header {
-  text-align: center;
-  padding: 20px 0;
-  background-color: #f8b400;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ffb347;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
-.container {
+.navbar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Stylowanie kart */
-.cat-card {
+.navbar .logo h1 {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.navbar nav ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: white;
+  padding: 5px 10px;
+  transition: background-color 0.3s;
+}
+
+.navbar nav ul li a:hover {
+  background-color: white;
+  color: #ffb347;
+  border-radius: 5px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(to bottom, #ffdbac, #ffd580);
+  height: 60vh;
+  margin-top: 60px;
+  color: #333;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  background-color: #ffb347;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hero button:hover {
+  background-color: #ff9b00;
+}
+
+.gallery-container {
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.gallery-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.gallery-item {
+  display: inline-block;
   width: 300px;
+  margin: 20px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-.cat-card:hover {
+.gallery-item:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Obrazy kotów */
-.cat-image {
+.gallery-item img,
+.gallery-item video {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-/* Tytuły i opisy */
-.cat-title {
+.gallery-item h3 {
   font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
   margin: 10px 0;
-  color: #444;
 }
 
-.cat-description {
+.gallery-item p {
   font-size: 1rem;
-  padding: 0 15px 10px;
-  color: #666;
+  margin: 0 15px 10px;
   text-align: justify;
 }
 
-/* Filmy */
-.cat-video {
-  width: 100%;
-  height: 200px;
-  display: block;
-  border-top: 1px solid #eee;
-  margin-top: 10px;
+.gallery-item .action-btn {
+  background-color: #ffb347;
+  color: white;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gallery-item .action-btn:hover {
+  background-color: #ff9b00;
+}
+
+.info-section {
+  padding: 20px;
+  background-color: #fff8e7;
+  margin: 20px 0;
+}
+
+.info-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.info-section ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 1.1rem;
 }
 
 footer {
-  text-align: center;
   background-color: #444;
   color: white;
-  padding: 10px 0;
-  font-size: 0.9rem;
+  padding: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #ffb347;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
