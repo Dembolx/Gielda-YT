@@ -41,19 +41,19 @@ function animateTableCell(cell) {
   }, 500);
 }
 
-function updateTable(btcPrice, btcChange, priceCellId, changeCellId) {
+function updateTable(price, change, priceCellId, changeCellId) {
   const priceCell = document.getElementById(priceCellId);
   const changeCell = document.getElementById(changeCellId);
 
-  priceCell.innerText = btcPrice.toFixed(2);
-  changeCell.innerText = `${btcChange.toFixed(2)}%`;
+  priceCell.innerText = price.toFixed(2);
+  changeCell.innerText = `${change.toFixed(2)}%`;
 
-  if (btcChange > 0) {
+  if (change > 0) {
     priceCell.classList.add("green");
     changeCell.classList.add("green");
     priceCell.classList.remove("red");
     changeCell.classList.remove("red");
-  } else if (btcChange < 0) {
+  } else if (change < 0) {
     priceCell.classList.add("red");
     changeCell.classList.add("red");
     priceCell.classList.remove("green");
@@ -76,12 +76,22 @@ function updateGradient(chart, data) {
 // Funkcja aktualizująca wykres
 function updateChart() {
   // Losowa zmiana ceny
-  const change = (Math.random() - 0.5) * 200;
-  btcPrice += change;
-  const btcChange = (change / initialBtcPrice) * 100;
+  const btcChange = (Math.random() - 0.5) * 200;
+  btcPrice += btcChange;
+  const btcPercentChange = (btcChange / initialBtcPrice) * 100;
+
+  const ethChange = (Math.random() - 0.5) * 50;
+  ethPrice += ethChange;
+  const ethPercentChange = (ethChange / ethPrice) * 100;
+
+  const ltcChange = (Math.random() - 0.5) * 10;
+  ltcPrice += ltcChange;
+  const ltcPercentChange = (ltcChange / ltcPrice) * 100;
 
   // Aktualizacja tabeli
-  updateTable(btcPrice, btcChange, "btcPriceTable", "btcChangeTable");
+  updateTable(btcPrice, btcPercentChange, "btcPriceTable", "btcChangeTable");
+  updateTable(ethPrice, ethPercentChange, "ethPriceTable", "ethChangeTable");
+  updateTable(ltcPrice, ltcPercentChange, "ltcPriceTable", "ltcChangeTable");
 
   // Zaktualizowanie wykresu
   data.shift();
@@ -158,3 +168,67 @@ const myChart = new Chart(ctx, {
     },
   },
 });
+
+// Funkcja do generowania rekomendacji rynkowych
+// Funkcja do generowania rekomendacji rynkowych
+function updateRecommendations() {
+  const btcChange = parseFloat(
+    document.getElementById("btcChangeTable").innerText
+  );
+  const ethChange = parseFloat(
+    document.getElementById("ethChangeTable").innerText
+  );
+  const ltcChange = parseFloat(
+    document.getElementById("ltcChangeTable").innerText
+  );
+
+  const changes = [
+    { name: "Bitcoin", change: btcChange },
+    { name: "Ethereum", change: ethChange },
+    { name: "Litecoin", change: ltcChange },
+  ];
+
+  // Znajdź kryptowalutę z największą zmianą
+  const maxChangeCrypto = changes.reduce(
+    (max, curr) => (Math.abs(curr.change) > Math.abs(max.change) ? curr : max),
+    changes[0]
+  );
+
+  let recommendationText = "";
+  let recommendationAction = "";
+
+  // Ustaw rekomendacje na podstawie zmian
+  if (maxChangeCrypto.change > 0) {
+    recommendationText = `Największa zmiana: ${
+      maxChangeCrypto.name
+    } (+${maxChangeCrypto.change.toFixed(2)}%)`;
+    recommendationAction = `Rozważ sprzedaż ${maxChangeCrypto.name}.`;
+  } else {
+    recommendationText = `Największa zmiana: ${
+      maxChangeCrypto.name
+    } (${maxChangeCrypto.change.toFixed(2)}%)`;
+    recommendationAction = `Rozważ zakup ${maxChangeCrypto.name}.`;
+  }
+
+  // Zaktualizuj tekst rekomendacji ogólnych
+  document.getElementById("recommendationText").innerText = recommendationText;
+  document.getElementById("recommendationAction").innerText =
+    recommendationAction;
+
+  // Dodatkowa rekomendacja dla Bitcoina
+  let btcRecommendation = "";
+  if (btcChange > 0) {
+    btcRecommendation = "Cena Bitcoina wzrasta. Rozważ sprzedaż.";
+  } else if (btcChange < 0) {
+    btcRecommendation = "Cena Bitcoina spada. Rozważ zakup.";
+  } else {
+    btcRecommendation = "Cena Bitcoina się nie zmienia. Obserwuj rynek.";
+  }
+
+  // Zaktualizuj rekomendację dla Bitcoina
+  document.getElementById("btcBuySellRecommendation").innerText =
+    btcRecommendation;
+}
+
+// Zaktualizuj rekomendacje przy każdej zmianie
+setInterval(updateRecommendations, 2000);
